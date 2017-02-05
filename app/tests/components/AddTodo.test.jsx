@@ -12,15 +12,28 @@ describe('AddTodo', () => {
   });
 
   it('should call handleAddTodo if valid text entered', () => {
+    var todoText = 'Added a test for adding items';
     var spy = expect.createSpy();
-    var todoappForm = TestUtils.renderIntoDocument(<AddTodo handleAddTodo={spy}/>);
-    var $el = $(ReactDOM.findDOMNode(todoappForm));
+    var addTodo = TestUtils.renderIntoDocument(<AddTodo handleAddTodo={spy}/>);
+    var $el = $(ReactDOM.findDOMNode(addTodo));
 
-    todoappForm.refs.todoItem.value = "Added a test for adding items";
+    addTodo.refs.todoItem.value = todoText;
     TestUtils.Simulate.submit($el.find('form')[0]);
 
-    expect(spy).toHaveBeenCalled("Added a test for adding items");
+    expect(spy)
+    .toHaveBeenCalled();
+    // .toHaveBeenCalledWith(todoText);
   });
 
+  it('should not call handleAddTodo if invalid text entered', () => {
+    var todoText = '';
+    var spy = expect.createSpy();
+    var addTodo = TestUtils.renderIntoDocument(<AddTodo handleAddTodo={spy}/>);
+    var $el = $(ReactDOM.findDOMNode(addTodo));
 
+    addTodo.refs.todoItem.value = todoText;
+    TestUtils.Simulate.submit($el.find('form')[0]);
+
+    expect(spy).toNotHaveBeenCalled();
+  });
 });

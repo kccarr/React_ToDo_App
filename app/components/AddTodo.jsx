@@ -11,6 +11,10 @@ var AddTodo = React.createClass({
       this.refs.todoItem.value = '';
       todoListBase.push({id: todoID, text: todoInput});
       this.props.handleAddTodo(todoListBase);
+    } else {
+      // if user does not enter valid text then the cursor
+      // goes back to form
+      this.refs.todoItem.focus();
     }
   },
 
