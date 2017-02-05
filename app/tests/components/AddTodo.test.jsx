@@ -4,16 +4,16 @@ var expect = require('expect');
 var $ = require('jQuery');
 var TestUtils = require('react-addons-test-utils');
 
-var TodoAppForm = require('TodoAppForm');
+var AddTodo = require('AddTodo');
 
-describe('TodoAppForm', () => {
+describe('AddTodo', () => {
   it('should exist', () => {
-    expect(TodoAppForm).toExist();
+    expect(AddTodo).toExist();
   });
 
   it('should call handleAddTodo if valid text entered', () => {
     var spy = expect.createSpy();
-    var todoappForm = TestUtils.renderIntoDocument(<TodoAppForm handleAddTodo={spy}/>);
+    var todoappForm = TestUtils.renderIntoDocument(<AddTodo handleAddTodo={spy}/>);
     var $el = $(ReactDOM.findDOMNode(todoappForm));
 
     todoappForm.refs.todoItem.value = "Added a test for adding items";
