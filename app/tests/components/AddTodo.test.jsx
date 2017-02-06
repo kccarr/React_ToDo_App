@@ -20,9 +20,8 @@ describe('AddTodo', () => {
     addTodo.refs.todoItem.value = todoText;
     TestUtils.Simulate.submit($el.find('form')[0]);
 
-    expect(spy)
-    .toHaveBeenCalled();
-    // .toHaveBeenCalledWith(todoText);
+    // expect(spy).toHaveBeenCalledWith(todoText);
+    expect(spy).toHaveBeenCalled();
   });
 
   it('should not call handleAddTodo if invalid text entered', () => {

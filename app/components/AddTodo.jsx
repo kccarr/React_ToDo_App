@@ -1,7 +1,7 @@
 var React = require('react');
 
 var AddTodo = React.createClass({
-  onSubmit: function(e) {
+  handleSubmit: function(e) {
     e.preventDefault();
     var todoListBase = this.props.todos || [];
     var todoID = todoListBase.length + 1;
@@ -21,7 +21,7 @@ var AddTodo = React.createClass({
   render: function() {
     return (
       <div>
-        <form ref="form" onSubmit={this.onSubmit} className="todo-app-form">
+        <form onSubmit={this.handleSubmit} className="todo-app-form">
           <input type="text" ref="todoItem" placeholder="Add a new To Do Item"/>
           <button className="button expanded">Add To Do</button>
         </form>
