@@ -11,5 +11,18 @@ describe('Todo', () => {
     expect(Todo).toExist();
   });
 
+  it('should toggle completed value when handleToggle called', () => {
+    var todoData = {
+      id: 199,
+      text: 'Write todo.test.jsx test',
+      completed: true
+    };
 
+    var spy = expect.createSpy();
+    var todo = TestUtils.renderIntoDocument(<Todo {...todoData} onToggle={spy}/>)
+    var $el = $(ReactDOM.findDOMNode(todo));
+    TestUtils.Simulate.click($el[0]);
+
+    expect(spy).toHaveBeenCalledWith(199);
+  });
 });
