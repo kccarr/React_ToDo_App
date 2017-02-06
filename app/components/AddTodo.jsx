@@ -3,19 +3,33 @@ var React = require('react');
 var AddTodo = React.createClass({
   handleSubmit: function(e) {
     e.preventDefault();
-    var todoListBase = this.props.todos || [];
-    var todoID = todoListBase.length + 1;
-    var todoInput = this.refs.todoItem.value;
+    var todoText = this.refs.todoItem.value;
 
-    if (todoInput !== '') {
+    if (todoText.length > 0) {
       this.refs.todoItem.value = '';
-      todoListBase.push({id: todoID, text: todoInput});
-      this.props.handleAddTodo(todoListBase);
+      this.props.handleAddTodo(todoText);
     } else {
-      // if user does not enter valid text then the cursor
-      // goes back to form
       this.refs.todoItem.focus();
     }
+
+    // first method I used to add to do list items
+    // I am changing the method in order to follow
+    // video course
+
+    // e.preventDefault();
+    // var todoListBase = this.props.todos || [];
+    // var todoID = todoListBase.length + 1;
+    // var todoInput = this.refs.todoItem.value;
+    //
+    // if (todoInput !== '') {
+    //   this.refs.todoItem.value = '';
+    //   todoListBase.push({id: todoID, text: todoInput});
+    //   this.props.handleAddTodo(todoListBase);
+    // } else {
+    //   // if user does not enter valid text then the cursor
+    //   // goes back to form
+    //   this.refs.todoItem.focus();
+    // }
   },
 
   render: function() {
