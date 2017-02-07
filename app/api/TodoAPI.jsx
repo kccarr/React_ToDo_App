@@ -22,6 +22,7 @@ module.exports = {
   },
   filterTodos: function(todos, showCompleted, searchText){
     var filteredTodos = todos;
+    var searchText = searchText.toLowerCase()
 
     // Filter by showCompleted
     filteredTodos = filteredTodos.filter(a => {
@@ -30,8 +31,10 @@ module.exports = {
 
     // Filter by searchText
     filteredTodos = filteredTodos.filter(a => {
+      // could have also used .indexOf
       var re = new RegExp(searchText);
-      return (searchText !== " ") ? (a.text.match(re)) : a.text
+      var text = a.text.toLowerCase();
+      return (searchText !== " ") ? (text.match(re)) : a.text;
     });
 
     // Sort todos with non-completed first
