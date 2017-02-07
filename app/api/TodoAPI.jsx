@@ -29,7 +29,10 @@ module.exports = {
     });
 
     // Filter by searchText
-    filteredTodos = filteredTodos.filter(a => (searchText !== "") ? (a.text === searchText) : a.text);
+    filteredTodos = filteredTodos.filter(a => {
+      var re = new RegExp(searchText);
+      return (searchText !== " ") ? (a.text.match(re)) : a.text
+    });
 
     // Sort todos with non-completed first
     filteredTodos = filteredTodos.sort(a => a.completed);
